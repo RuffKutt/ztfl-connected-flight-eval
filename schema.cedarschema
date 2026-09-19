@@ -1,0 +1,18 @@
+namespace ZeroTrustAgent {
+  entity Tenant;
+  entity Agent in [Tenant] = {
+    tenantId: String,
+    verified: Bool,
+    taskScope: String,
+    ephemeralTag: String
+  };
+  entity Service in [Tenant] = {
+    tenantId: String
+  };
+
+  action Read appliesTo {
+    principal: Agent,
+    resource: Service,
+    context: {}
+  };
+}
